@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 224 40% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 40% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 40% 12%;
+
+    --primary: 234 85% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 20% 93%;
+    --secondary-foreground: 224 40% 12%;
+
+    --muted: 220 16% 93%;
+    --muted-foreground: 220 12% 46%;
+
+    --accent: 234 85% 96%;
+    --accent-foreground: 234 85% 45%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 16% 90%;
+    --input: 220 16% 90%;
+    --ring: 234 85% 60%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --glass-bg: 0 0% 100% / 0.65;
+    --glass-border: 0 0% 100% / 0.35;
+    --glass-shadow: 234 85% 30% / 0.08;
+    --gradient-start: 234 85% 96%;
+    --gradient-mid: 200 80% 96%;
+    --gradient-end: 260 70% 96%;
+
+    /* Sidebar */
+    --sidebar-background: 234 45% 15%;
+    --sidebar-foreground: 220 20% 90%;
+    --sidebar-primary: 234 85% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 234 30% 22%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 234 30% 20%;
+    --sidebar-ring: 234 85% 65%;
+
+    /* Status colors as tokens */
+    --status-blue: 221 83% 53%;
+    --status-green: 142 71% 45%;
+    --status-yellow: 38 92% 50%;
+    --status-red: 0 72% 51%;
+    --status-purple: 262 83% 58%;
+  }
+
+  .dark {
+    --background: 224 40% 6%;
+    --foreground: 220 20% 95%;
+
+    --card: 224 30% 10%;
+    --card-foreground: 220 20% 95%;
+
+    --popover: 224 30% 10%;
+    --popover-foreground: 220 20% 95%;
+
+    --primary: 234 85% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 224 20% 16%;
+    --secondary-foreground: 220 20% 95%;
+
+    --muted: 224 20% 16%;
+    --muted-foreground: 220 12% 60%;
+
+    --accent: 234 40% 20%;
+    --accent-foreground: 234 85% 80%;
+
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 224 20% 16%;
+    --input: 224 20% 16%;
+    --ring: 234 85% 65%;
+
+    --glass-bg: 224 30% 10% / 0.7;
+    --glass-border: 224 30% 20% / 0.5;
+    --glass-shadow: 0 0% 0% / 0.3;
+    --gradient-start: 234 40% 8%;
+    --gradient-mid: 200 30% 8%;
+    --gradient-end: 260 30% 8%;
+
+    --sidebar-background: 224 40% 6%;
+    --sidebar-foreground: 220 20% 85%;
+    --sidebar-primary: 234 85% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 224 30% 14%;
+    --sidebar-accent-foreground: 220 20% 95%;
+    --sidebar-border: 224 30% 14%;
+    --sidebar-ring: 234 85% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  /* Glassmorphism card */
+  .glass-card {
+    @apply rounded-2xl border shadow-lg;
+    background: hsl(var(--glass-bg));
+    border-color: hsl(var(--glass-border));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px hsl(var(--glass-shadow));
+  }
+
+  /* Gradient background for main content area */
+  .gradient-bg {
+    background:
+      radial-gradient(ellipse 80% 60% at 10% 20%, hsl(var(--gradient-start)) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 50% at 80% 80%, hsl(var(--gradient-mid)) 0%, transparent 50%),
+      radial-gradient(ellipse 70% 70% at 50% 10%, hsl(var(--gradient-end)) 0%, transparent 50%),
+      hsl(var(--background));
+  }
+
+  /* Sidebar glass style */
+  .sidebar-glass {
+    background: hsl(var(--sidebar-background));
+    border-right: 1px solid hsl(var(--sidebar-border));
+  }
+
+  /* Hover card animation */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px hsl(var(--glass-shadow));
+  }
+
+  /* Icon hover scale */
+  .icon-hover {
+    @apply transition-transform duration-200 ease-out;
+  }
+  .icon-hover:hover {
+    transform: scale(1.1);
+  }
+}
